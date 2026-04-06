@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./style.css";
 
 export default function App() {
   const [playermove, setPlayermove] = useState("");
@@ -63,6 +64,15 @@ export default function App() {
     }
 }
 
+  function resetGame() {
+    setPlayermove("");
+    setcomputermove("");
+    setresult("");
+    setHistory([]);
+    setStreak(0);
+    setScore({ player: 0, cpu: 0 });
+  }
+
   return (
     <div>
       <h1>Rock Paper Scissors</h1>
@@ -86,6 +96,7 @@ export default function App() {
         ))}
       </ul> 
       <h3>🔥 Streak: {streak}</h3>
+      <button className="reset-btn" onClick={resetGame}>Reset Game 🔄</button>
       </div>
   );
 }
